@@ -9,7 +9,7 @@
   Purpose: Synchronous BPEL Process
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 -->
-<process name="BPELProcess1"
+<process name="BPELProcess3333"
                targetNamespace="http://xmlns.oracle.com/TransformationTest/DVMTest/BPELProcess1"
                xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
                xmlns:client="http://xmlns.oracle.com/TransformationTest/DVMTest/BPELProcess1"
