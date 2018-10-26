@@ -1,0 +1,80 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.turktelekom.com.tr/b2bgw/common/1.0"
+           xmlns:tns="http://www.turktelekom.com.tr/b2bgw/common/1.0" attributeFormDefault="unqualified"
+           elementFormDefault="qualified" version="1.0">
+  <!-- ==================== -->
+  <xs:element name="header" type="tns:HeaderType"/>
+  <xs:element name="fault" type="tns:FaultType"/>
+  <!-- ==================== -->
+  <xs:simpleType name="ActivityStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SUCCESS"/>
+      <xs:enumeration value="FAILURE"/>
+      <xs:enumeration value="WARNING"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- ==================== -->
+  <xs:simpleType name="MsgTypeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="REQUEST"/>
+      <xs:enumeration value="RESPONSE"/>
+      <xs:enumeration value="NOTIFICATION"/>
+      <xs:enumeration value="ERROR"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- ==================== -->
+  <xs:simpleType name="CommunicationPatternType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SimpleResponse"/>
+      <xs:enumeration value="MultipleResponse"/>
+      <xs:enumeration value="Notification"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- ==================== -->
+  <xs:simpleType name="CommunicationStyleType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="RPC"/>
+      <xs:enumeration value="MSG"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- ==================== -->
+  <xs:simpleType name="PriorityType">
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="9"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- ==================== -->
+  <xs:complexType name="HeaderType">
+    <xs:sequence>
+      <xs:element name="activityName" type="xs:string" minOccurs="0"/>
+      <xs:element name="msgType" type="tns:MsgTypeType" minOccurs="0"/>
+      <xs:element name="senderURI" type="xs:anyURI" minOccurs="0"/>
+      <xs:element name="destinationURI" type="xs:anyURI" minOccurs="0"/>
+      <xs:element name="originatorURI" type="xs:anyURI" minOccurs="0"/>
+      <xs:element name="activityStatus" type="tns:ActivityStatusType" minOccurs="0"/>
+      <xs:element name="userId" type="xs:string" minOccurs="0"/>
+      <xs:element name="timestamp" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="priority" type="tns:PriorityType" minOccurs="0" default="4"/>
+      <xs:element name="communicationPattern" type="tns:CommunicationPatternType" minOccurs="0"/>
+      <xs:element name="communicationStyle" type="tns:CommunicationStyleType" minOccurs="0"/>
+      <xs:element name="requestedBatchSize" type="xs:int" minOccurs="0"/>
+      <xs:element name="batchSequenceNumber" type="xs:int" minOccurs="0"/>
+      <xs:element name="batchSequenceEndOfReply" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="correlationId" type="xs:string" minOccurs="0"/>
+      <xs:element name="businessId" type="xs:string" minOccurs="0"/>
+      <xs:element name="requestId" type="xs:string" minOccurs="0"/>
+      <xs:element name="messageId" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- ==================== -->
+  <xs:complexType name="FaultType">
+    <xs:sequence>
+      <xs:element name="faultCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="faultMessage" type="xs:string" minOccurs="0"/>
+      <xs:element name="sourceSystem" type="xs:string" minOccurs="0"/>
+      <xs:element name="extFaultCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="extFaultMessage" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

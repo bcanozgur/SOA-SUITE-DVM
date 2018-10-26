@@ -1,0 +1,451 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<xs:schema version="1.0" xmlns:cdm="http://www.turktelekom.com.tr/b2bgw/cdm/1.0" targetNamespace="http://www.turktelekom.com.tr/b2bgw/cdm/1.0"
+     xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<!-- ================= 
+-->
+    <xs:element
+         name="productOrder" type="cdm:ProductOrder"/>
+
+<!-- ================= 
+-->
+    <xs:complexType name="Characteristic">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" minOccurs="0"/>
+            <xs:element name="value" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="Product">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string" minOccurs="0"/>
+            <xs:element name="name" type="xs:string" minOccurs="0"/>
+            <xs:element name="state" type="xs:string" minOccurs="0"/>
+            <xs:element name="productSpec" type="cdm:ProductSpec" minOccurs="0"/>
+            <xs:element name="place" type="cdm:Place" minOccurs="0"/>
+            <xs:element name="characteristic" type="cdm:Characteristic" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="productRelationship" type="cdm:ProductRelationship" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="relatedParty" type="cdm:RelatedParty" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="realizingService" type="cdm:Service" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="realizingResource" type="cdm:Resource" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="ProductSpec">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string" minOccurs="0"/>
+            <xs:element name="name" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="ProductRelationship">
+        <xs:sequence>
+            <xs:element name="type" type="xs:string" minOccurs="0"/>
+            <xs:element name="product" type="cdm:Product" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="OrderItemRelationship">
+        <xs:sequence>
+            <xs:element name="type" type="xs:string" minOccurs="0"/>
+            <xs:element name="id" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="ProductOffering">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string" minOccurs="0"/>
+            <xs:element name="name" type="xs:string" minOccurs="0"/>
+            <xs:element name="description" type="xs:string" minOccurs="0"/>
+            <xs:element name="isBundle" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="lifecycleStatus" type="xs:string" minOccurs="0"/>
+            <xs:element name="campaignId" type="xs:string" minOccurs="0"/>
+            <xs:element name="sla" type="cdm:ServiceLevelAgreementSpec" minOccurs="0"/>
+            <xs:element name="productSpec" type="cdm:ProductSpec" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="ServiceLevelAgreementSpec">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string" minOccurs="0"/>
+            <xs:element name="name" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="ServiceQualification">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string" minOccurs="0"/>
+            <xs:element name="externalId" type="xs:string" minOccurs="0"/>
+            <xs:element name="qualificationDate" type="xs:dateTime" minOccurs="0"/>
+
+<!-- result can be "qualified", "unqualified" 
+-->
+            <xs:element name="qualificationResult" type="xs:string" minOccurs="0"/>
+            <xs:element name="provideUnavailabilityReason" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="serviceQualificationItem" type="cdm:ServiceQualificationItem" minOccurs="0"
+                 maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="ServiceQualificationItem">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string" minOccurs="0"/>
+
+<!-- result can be "qualified", "unqualified" 
+-->
+            <xs:element name="qualificationItemResult" type="xs:string" minOccurs="0"/>
+            <xs:element name="service" type="cdm:Service" minOccurs="0"/>
+            <xs:element name="eligibilityUnavailabilityReason" type="cdm:EligibilityUnavailabilityReason"
+                 minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="EligibilityUnavailabilityReason">
+        <xs:sequence>
+            <xs:element name="code" type="xs:string" minOccurs="0"/>
+            <xs:element name="label" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="Service">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string" minOccurs="0"/>
+            <xs:element name="name" type="xs:string" minOccurs="0"/>
+            <xs:element name="type" type="xs:string" minOccurs="0"/>
+            <xs:element name="serviceSpec" type="cdm:ServiceSpec" minOccurs="0"/>
+            <xs:element name="serviceRelationship" type="cdm:ServiceRelationship" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="place" type="cdm:Place" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="relatedParty" type="cdm:RelatedParty" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="characteristic" type="cdm:Characteristic" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="ServiceSpec">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string" minOccurs="0"/>
+            <xs:element name="name" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="ServiceRelationship">
+        <xs:sequence>
+            <xs:element name="type" type="xs:string" minOccurs="0"/>
+            <xs:element name="service" type="cdm:Service" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="Resource">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string" minOccurs="0"/>
+            <xs:element name="name" type="xs:string" minOccurs="0"/>
+            <xs:element name="resourceSpec" type="cdm:ResourceSpec" minOccurs="0"/>
+            <xs:element name="resourceRelationship" type="cdm:ResourceRelationship" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="characteristic" type="cdm:Characteristic" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="ResourceSpec">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string" minOccurs="0"/>
+            <xs:element name="name" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="ResourceRelationship">
+        <xs:sequence>
+            <xs:element name="type" type="xs:string" minOccurs="0"/>
+            <xs:element name="resource" type="cdm:Resource" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="ProductOrder">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string" minOccurs="0"/>
+            <xs:element name="externalId" type="xs:string" minOccurs="0"/>
+            <xs:element name="priority" type="xs:string" minOccurs="0"/>
+            <xs:element name="state" type="xs:string" minOccurs="0"/>
+            <xs:element name="description" type="xs:string" minOccurs="0"/>
+            <xs:element name="orderType" type="xs:string" minOccurs="0"/>
+            <xs:element name="characteristic" type="cdm:Characteristic" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="relatedParty" type="cdm:RelatedParty" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="orderDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="completionDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="lastUpdate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="requestedStartDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="requestedCompletionDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="expectedCompletionDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="note" type="cdm:Note" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="orderItem" type="cdm:OrderItem" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="OrderItem">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string" minOccurs="0"/>
+            <xs:element name="action" type="xs:string" minOccurs="0"/>
+            <xs:element name="state" type="xs:string" minOccurs="0"/>
+            <xs:element name="quantity" type="xs:int" minOccurs="0"/>
+            <xs:element name="characteristic" type="cdm:Characteristic" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="product" type="cdm:Product" minOccurs="0"/>
+            <xs:element name="appointment" type="cdm:Appointment" minOccurs="0"/>
+            <xs:element name="orderItemRelationship" type="cdm:OrderItemRelationship" minOccurs="0"
+                 maxOccurs="unbounded"/>
+            <xs:element name="productOffering" type="cdm:ProductOffering" minOccurs="0"/>
+            <xs:element name="qualification" type="cdm:ServiceQualification" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="Appointment">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string" minOccurs="0"/>
+            <xs:element name="externalId" type="xs:string" minOccurs="0"/>
+            <xs:element name="description" type="xs:string" minOccurs="0"/>
+            <xs:element name="category" type="xs:string" minOccurs="0"/>
+            <xs:element name="state" type="xs:string" minOccurs="0"/>
+            <xs:element name="creationDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="lastUpdate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="startDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="endDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="note" type="cdm:Note" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="relatedObject" type="cdm:RelatedObject" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="relatedParty" type="cdm:RelatedParty" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="place" type="cdm:Place" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="RelatedObject">
+        <xs:sequence>
+<!-- "problemToSolve", "orderToDeliver" 
+-->
+            <xs:element name="involvement" type="xs:string" minOccurs="0"/>
+
+<!-- involvement ile iliskili tekil Id/Numara 
+-->
+            <xs:element name="reference" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="RelatedParty">
+        <xs:sequence>
+            <xs:element name="role" type="xs:string" minOccurs="0"/>
+            <xs:element name="id" type="xs:string" minOccurs="0"/>
+            <xs:choice>
+                <xs:element name="individual" type="cdm:Individual" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="organization" type="cdm:Organization" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="Individual">
+        <xs:sequence>
+            <xs:element name="givenNames" type="xs:string" minOccurs="0"/>
+            <xs:element name="familyNames" type="xs:string" minOccurs="0"/>
+            <xs:element name="individualIdentification" type="cdm:Identification" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="contactMedium" type="cdm:ContactMedium" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="Organization">
+        <xs:sequence>
+            <xs:element name="tradingName" type="xs:string" minOccurs="0"/>
+            <xs:element name="organizationIdentification" type="cdm:Identification" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="contactMedium" type="cdm:ContactMedium" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="Identification">
+        <xs:sequence>
+<!-- individual: "turkishIdentity", "passport" 
+-->
+
+<!-- organization: "companyRegistrationNumber" 
+-->
+            <xs:element name="type" type="xs:string" minOccurs="0"/>
+            <xs:element name="id" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="ContactMedium">
+        <xs:sequence>
+            <xs:element name="preferred" type="xs:boolean" minOccurs="0"/>
+
+<!-- type="email", "fixedPhone", "mobilePhone" 
+-->
+            <xs:element name="type" type="xs:string" minOccurs="0"/>
+            <xs:choice>
+                <xs:element name="email" type="xs:string" minOccurs="0"/>
+                <xs:element name="number" type="xs:string" minOccurs="0"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="Note">
+        <xs:sequence>
+            <xs:element name="date" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="author" type="xs:string" minOccurs="0"/>
+            <xs:element name="text" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="Place">
+        <xs:sequence>
+<!-- bagimsiz bolum kodu olarak kullanilir 
+-->
+            <xs:element name="id" type="xs:string" minOccurs="0"/>
+            <xs:element name="name" type="xs:string" minOccurs="0"/>
+
+<!-- role="installAddress", ... 
+-->
+            <xs:element name="role" type="xs:string" minOccurs="0"/>
+            <xs:element name="address" type="cdm:Address" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="Address">
+        <xs:sequence>
+<!-- acik adres 
+-->
+            <xs:element name="explicitAddress" type="xs:string" minOccurs="0"/>
+
+<!-- sokak 
+-->
+            <xs:element name="subStreet" type="xs:string" minOccurs="0"/>
+
+<!-- cadde 
+-->
+            <xs:element name="street" type="xs:string" minOccurs="0"/>
+
+<!-- bulvar 
+-->
+            <xs:element name="boulevard" type="xs:string" minOccurs="0"/>
+
+<!-- koy 
+-->
+            <xs:element name="village" type="xs:string" minOccurs="0"/>
+
+<!-- belde 
+-->
+            <xs:element name="town" type="xs:string" minOccurs="0"/>
+
+<!-- mahalle 
+-->
+            <xs:element name="neighborhood" type="xs:string" minOccurs="0"/>
+
+<!-- semt 
+-->
+            <xs:element name="subDistrict" type="xs:string" minOccurs="0"/>
+
+<!-- ilce 
+-->
+            <xs:element name="district" type="xs:string" minOccurs="0"/>
+
+<!-- sehir 
+-->
+            <xs:element name="city" type="xs:string" minOccurs="0"/>
+
+<!-- posta kodu 
+-->
+            <xs:element name="postalCode" type="xs:string" minOccurs="0"/>
+
+<!-- ulke 
+-->
+            <xs:element name="country" type="xs:string" minOccurs="0"/>
+            <xs:element name="subAddress" type="cdm:SubAddress" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:complexType name="SubAddress">
+        <xs:sequence>
+<!-- bagimsiz bolumun tipi 
+-->
+            <xs:element name="subUnitType" type="xs:string" minOccurs="0"/>
+
+<!-- bagimsiz bolumun numarasi 
+-->
+            <xs:element name="subUnitNo" type="xs:string" minOccurs="0"/>
+
+<!-- kat no 
+-->
+            <xs:element name="levelNo" type="xs:string" minOccurs="0"/>
+
+<!-- bina no 
+-->
+            <xs:element name="buildingNo" type="xs:string" minOccurs="0"/>
+
+<!-- bina/site adi 
+-->
+            <xs:element name="buildingName" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- ================= 
+-->
+    <xs:simpleType name="String100">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+<!-- ================= 
+-->
+    <xs:simpleType name="String255">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

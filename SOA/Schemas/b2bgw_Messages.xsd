@@ -1,0 +1,33 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<xs:schema targetNamespace="http://www.turktelekom.com.tr/b2bgw/messages/1.0"
+           xmlns:tns="http://www.turktelekom.com.tr/b2bgw/messages/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:b2bcdm="http://www.turktelekom.com.tr/b2bgw/cdm/1.0"
+           xmlns:b2bcom="http://www.turktelekom.com.tr/b2bgw/common/1.0" elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+  <!-- =============== -->
+  <xs:import schemaLocation="b2bgw_CommonTypes.xsd" namespace="http://www.turktelekom.com.tr/b2bgw/common/1.0"/>
+  <xs:import schemaLocation="b2bgw_CDM.xsd" namespace="http://www.turktelekom.com.tr/b2bgw/cdm/1.0"/>
+  <!-- =============== -->
+  <xs:element name="faultResponseMessage" type="tns:FaultResponseMessage"/>
+  <xs:element name="productOrderRequestMessage" type="tns:ProductOrderRequestMessage"/>
+  <xs:element name="productOrderResponseMessage" type="tns:ProductOrderResponseMessage"/>
+  <!-- =============== -->
+  <xs:complexType name="FaultResponseMessage">
+    <xs:choice>
+      <xs:element ref="b2bcom:fault" minOccurs="0" maxOccurs="1"/>
+    </xs:choice>
+  </xs:complexType>
+  <!-- =============== -->
+  <xs:complexType name="ProductOrderRequestMessage">
+    <xs:sequence>
+      <xs:element ref="b2bcdm:productOrder"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- =============== -->
+  <xs:complexType name="ProductOrderResponseMessage">
+    <xs:choice>
+      <xs:element ref="b2bcdm:productOrder" minOccurs="0" maxOccurs="1"/>
+      <xs:element ref="b2bcom:fault" minOccurs="0" maxOccurs="1"/>
+    </xs:choice>
+  </xs:complexType>
+</xs:schema>
