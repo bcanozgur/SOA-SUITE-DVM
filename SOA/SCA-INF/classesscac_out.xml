@@ -1,27 +1,2 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Faults>
-   <Fault>
-      <severity>error</severity>
-      <loc/>
-      <line>112</line>
-      <col>5</col>
-      <file>file:/C:/JDeveloper/mywork/TransformationTest/DVMTest/SOA/SCA-INF/bpel/BPELPr~0/src/orabpel/bpelprocess1/ExecLetBxExe0.java</file>
-      <name>/C:/JDeveloper/mywork/TransformationTest/DVMTest/SOA/SCA-INF/bpel/BPELPr~0/src/orabpel/bpelprocess1/ExecLetBxExe0.java</name>
-      <fix/>
-      <msg>cannot find symbol
-  symbol:   class Logger
-  location: class orabpel.bpelprocess1.ExecLetBxExe0</msg>
-   </Fault>
-   <Fault>
-      <severity>error</severity>
-      <loc/>
-      <line>112</line>
-      <col>22</col>
-      <file>file:/C:/JDeveloper/mywork/TransformationTest/DVMTest/SOA/SCA-INF/bpel/BPELPr~0/src/orabpel/bpelprocess1/ExecLetBxExe0.java</file>
-      <name>/C:/JDeveloper/mywork/TransformationTest/DVMTest/SOA/SCA-INF/bpel/BPELPr~0/src/orabpel/bpelprocess1/ExecLetBxExe0.java</name>
-      <fix/>
-      <msg>cannot find symbol
-  symbol:   variable Logger
-  location: class orabpel.bpelprocess1.ExecLetBxExe0</msg>
-   </Fault>
-</Faults>
+<Faults/>
