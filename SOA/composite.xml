@@ -28,7 +28,7 @@
     </componentType>
     <property name="bpel.config.transaction" type="xs:string" many="false">required</property>
   </component>
-  <component name="Mediator1">
+  <component name="Mediator2">
     <implementation.mediator src="Mediators/Mediator1.mplan"/>
     <componentType/>
   </component>
