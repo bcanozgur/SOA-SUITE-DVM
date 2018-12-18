@@ -17,8 +17,8 @@
                xmlns:ui="http://xmlns.oracle.com/soa/designer"
                xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
          xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
-         xmlns:ns1="http://www.turktelekom.com.tr/b2bgw/messages/1.0"
-         xmlns:ns2="http://www.turktelekom.com.tr/b2bgw/cdm/1.0"
+         xmlns:ns1="http://www.test.com.tr/test2test/messages/1.0"
+         xmlns:ns2="http://www.test.com.tr/test2test/cdm/1.0"
          xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
          xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
          xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
@@ -30,7 +30,7 @@
          xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
          xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
          xmlns:ns3="http://xmlns.oracle.com/TransformationTest/DVMTest/BPELProcess2"
-         xmlns:ns4="http://www.turktelekom.com.tr/b2bgw/common/1.0">
+         xmlns:ns4="http://www.test.com.tr/test2test/common/1.0">
   <bpelx:inlineSubProcess name="TestSP">
     <bpelx:annotation>
       <bpelx:general>
